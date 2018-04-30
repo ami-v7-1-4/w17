@@ -37,10 +37,10 @@ jobs:
       nodePool: dynamic__x86_64__WindowsServer_2016__c4_large
     steps:
       - TASK:
-        runtime:
-          options:
-            imageName: "drydock/w16aspnetcore"
-            imageTag: master
-        script:        
-          - dotnet --info
+          runtime:
+            options:
+              imageName: "drydock/w16aspnetcore"
+              imageTag: master
+          script:        
+            - dotnet --info
         
