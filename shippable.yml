@@ -1,14 +1,58 @@
+language: python
+
+runtime:
+  nodePool: dynamic__x86_64__WindowsServer_2016__c4_large
+  
+#jdk:
+#  - openjdk7
+#  - openjdk8
+#  - openjdk9 
+#  - oraclejdk10
+#  - oraclejdk8
+ # - oraclejdk9
+ 
+build:
+
+  pre_ci_boot:
+    image_name: drydock/w16
+    image_tag: master
+    pull: true
+    
+  ci:
+    - python --version
+    - node --version
+    - git lfs version
+    - javac -version
+    - ruby --version
+    - gcloud version
+    - aws --version
+    - az --version
+    - jfrog --version
+    - terraform -version
+    - packer --version
+    - jq --version
+    - kubectl version --client
+    - docker --version
+    - docker pull shippabledocker/sample_node_pvt:ecr
+    
+integrations:
+    
+  hub:
+ #Docker integration
+    - integrationName: ship-docker
+      type: dockerRegistryLogin
+      
 jobs:
- - name: aspdotnettest
-   type: runSh
-   runtime:
-     nodePool: dynamic__x86_64__WindowsServer_2016__c4_large
-   steps:
-     - TASK:
-         runtime:
-           options:
-             imageName: "drydock/w16aspnetcore"
-             imageTag: master
-         script:        
-           - dotnet --info
-           
+  - name: aspdotnettest
+    type: runSh
+    runtime:
+      nodePool: dynamic__x86_64__WindowsServer_2016__c4_large
+    steps:
+      - TASK:
+        runtime:
+          options:
+            imageName: "drydock/w16aspnetcore"
+            imageTag: master
+        script:        
+          - dotnet --info
+        
