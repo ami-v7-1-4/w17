@@ -1,34 +1,12 @@
-language: python
-
-runtime:
-  nodePool: dynamic__x86_64__WindowsServer_2016__c4_large
- 
-build:
-
-  pre_ci_boot:
-    image_name: drydock/w16dotnetcore
-    image_tag: master
-    pull: true
-    
-  ci:
-    - python --version
-    - dotnet --info
-    - dotnet --version
-    - docker pull shippabledocker/sample_node_pvt:ecr
-    
-integrations:
-    
-  hub:
- #Docker integration
-    - integrationName: ship-docker
-      type: dockerRegistryLogin
+resources:
       
 jobs:
- - name: dotnettest
+ - name: w16dotnetcore-runsh
    type: runSh
    runtime:
      nodePool: dynamic__x86_64__WindowsServer_2016__c4_large
    steps:
+     - IN: cli-configdocker
      - TASK:
          runtime:
            options:
@@ -37,3 +15,8 @@ jobs:
          script:        
            - dotnet --info
            - dotnet --version
+           - docker pull shippabledocker/sample_node_pvt:ecr
+           - echo CLICONFIGDOCKER_INTEGRATION_URL=$CLICONFIGDOCKER_INTEGRATION_URL
+           - echo CLICONFIGDOCKER_INTEGRATION_USERNAME=$CLICONFIGDOCKER_INTEGRATION_USERNAME
+           - echo CLICONFIGDOCKER_INTEGRATION_PASSWORD=${#CLICONFIGDOCKER_INTEGRATION_PASSWORD}
+           - echo CLICONFIGDOCKER_INTEGRATION_EMAIL=$CLICONFIGDOCKER_INTEGRATION_EMAIL
