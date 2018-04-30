@@ -14,25 +14,13 @@ runtime:
 build:
 
   pre_ci_boot:
-    image_name: drydock/w16
+    image_name: drydock/w16aspnetcore
     image_tag: master
     pull: true
     
   ci:
     - python --version
-    - node --version
-    - git lfs version
-    - javac -version
-    - ruby --version
-    - gcloud version
-    - aws --version
-    - az --version
-    - jfrog --version
-    - terraform -version
-    - packer --version
-    - jq --version
-    - kubectl version --client
-    - docker --version
+    - dotnet --info
     - docker pull shippabledocker/sample_node_pvt:ecr
     
 integrations:
