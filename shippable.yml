@@ -26,7 +26,7 @@ jobs:
             - jq --version
             - kubectl version --client
             - docker --version
-            - docker pull shippabledocker/sample_node_pvt:ecr
+            #- docker pull shippabledocker/sample_node_pvt:ecr
             - echo CLICONFIGDOCKER_INTEGRATION_URL=$CLICONFIGDOCKER_INTEGRATION_URL
             - echo CLICONFIGDOCKER_INTEGRATION_USERNAME=$CLICONFIGDOCKER_INTEGRATION_USERNAME
             - echo CLICONFIGDOCKER_INTEGRATION_PASSWORD=${#CLICONFIGDOCKER_INTEGRATION_PASSWORD}
