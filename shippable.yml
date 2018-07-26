@@ -6,7 +6,7 @@ jobs:
    runtime:
      nodePool: dynamic__x86_64__WindowsServer_2016__c4_large
    steps:
-     - IN: cli-configdocker
+    # - IN: cli-configdocker
      - TASK:
          runtime:
            options:
