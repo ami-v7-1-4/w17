@@ -37,36 +37,36 @@ jobs:
             - echo CLICONFIGDOCKER_INTEGRATION_PASSWORD=${#CLICONFIGDOCKER_INTEGRATION_PASSWORD}
             - echo CLICONFIGDOCKER_INTEGRATION_EMAIL=$CLICONFIGDOCKER_INTEGRATION_EMAIL
             
- - name: w16dotnetcore-runsh
-   type: runSh
-   runtime:
-     nodePool: dynamic__x86_64__WindowsServer_2016__c4_large
-   steps:
-     - IN: cli-configdocker
-     - TASK:
-         runtime:
-           options:
-             imageName: "drydock/w16dotnetcore"
-             imageTag: master
-         script:        
-           - dotnet --info
-           - dotnet --version
-           - python --version
-           - node --version
-           - git lfs version
-           - javac -version
-           - ruby --version
-           - gcloud version
-           - aws --version
-           - az --version
-           - jfrog --version
-           - terraform -version
-           - packer --version
-           - jq --version
-           - kubectl version --client
-           - docker --version
-           #- docker pull shippabledocker/sample_node_pvt:ecr
-           - echo CLICONFIGDOCKER_INTEGRATION_URL=$CLICONFIGDOCKER_INTEGRATION_URL
-           - echo CLICONFIGDOCKER_INTEGRATION_USERNAME=$CLICONFIGDOCKER_INTEGRATION_USERNAME
-           - echo CLICONFIGDOCKER_INTEGRATION_PASSWORD=${#CLICONFIGDOCKER_INTEGRATION_PASSWORD}
-           - echo CLICONFIGDOCKER_INTEGRATION_EMAIL=$CLICONFIGDOCKER_INTEGRATION_EMAIL
+  - name: w16dotnetcore-runsh
+    type: runSh
+    runtime:
+      nodePool: dynamic__x86_64__WindowsServer_2016__c4_large
+    steps:
+      - IN: cli-configdocker
+      - TASK:
+          runtime:
+            options:
+              imageName: "drydock/w16dotnetcore"
+              imageTag: master
+          script:        
+            - dotnet --info
+            - dotnet --version
+            - python --version
+            - node --version
+            - git lfs version
+            - javac -version
+            - ruby --version
+            - gcloud version
+            - aws --version
+            - az --version
+            - jfrog --version
+            - terraform -version
+            - packer --version
+            - jq --version
+            - kubectl version --client
+            - docker --version
+            #- docker pull shippabledocker/sample_node_pvt:ecr
+            - echo CLICONFIGDOCKER_INTEGRATION_URL=$CLICONFIGDOCKER_INTEGRATION_URL
+            - echo CLICONFIGDOCKER_INTEGRATION_USERNAME=$CLICONFIGDOCKER_INTEGRATION_USERNAME
+            - echo CLICONFIGDOCKER_INTEGRATION_PASSWORD=${#CLICONFIGDOCKER_INTEGRATION_PASSWORD}
+            - echo CLICONFIGDOCKER_INTEGRATION_EMAIL=$CLICONFIGDOCKER_INTEGRATION_EMAIL
