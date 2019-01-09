@@ -14,7 +14,7 @@ jobs:
           runtime:
             options:
               imageName: "drydock/w16aspnetcore"
-              imageTag: master
+              imageTag: v6.6.4
           script:        
             - dotnet --info
             - python --version
@@ -47,7 +47,7 @@ jobs:
           runtime:
             options:
               imageName: "drydock/w16dotnetcore"
-              imageTag: master
+              imageTag: v6.6.4
           script:        
             - dotnet --info
             - dotnet --version
